@@ -4,7 +4,7 @@
     "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
     "tasks.max": "1",
     "database.hostname": "YOUR_AIVEN_POSTGRES_HOST",
-    "database.port": "YOUR_AIVEN_POSTGRES_PORT",
+    "database.port": "AIVEN_POSTGRES_PORT",
     "database.user": "YOUR_AIVEN_USERNAME",
     "database.password": "YOUR_AIVEN_PASSWORD",
     "database.dbname": "defaultdb",
