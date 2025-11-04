@@ -1,7 +1,7 @@
-Binance CDC Data Pipeline with Monitoring
+**Binance CDC Data Pipeline with Monitoring**
 A real-time Change Data Capture (CDC) pipeline for streaming Binance cryptocurrency market data using Debezium, Apache Kafka, PostgreSQL, and Grafana for monitoring and visualization.
 
-Architecture Overview
+**Architecture Overview**
 text
 Binance REST API → PostgreSQL (Source) → Debezium CDC → Kafka → JDBC Sink → PostgreSQL (Sink) → Grafana
 Complete Data Flow
