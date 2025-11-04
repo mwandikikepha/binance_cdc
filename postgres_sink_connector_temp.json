@@ -1,0 +1,20 @@
+{
+  "name": "binance_postgres_sink",
+  "config": {
+    "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+    "connection.url": "jdbc:postgresql://YOUR_SINK_HOST:YOUR_SINK_PORT/YOUR_SINK_DB",
+    "connection.username": "YOUR_SINK_USERNAME",
+    "connection.password": "YOUR_SINK_PASSWORD",
+    "topics": "binance_cdc.binance_schema.binance_24hrdata,binance_cdc.binance_schema.binance_prices,binance_cdc.binance_schema.binance_recent_trades,binance_cdc.binance_schema.binance_candlesticks",
+    "insert.mode": "insert",
+    "delete.enabled": "false",
+    "table.name.format": "binance_schema.${topic}",
+    "transforms": "unwrap,route",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "true",
+    "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.route.regex": "binance_cdc\\.binance_schema\\.(.*)",
+    "transforms.route.replacement": "$1"
+  }
+}

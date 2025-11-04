@@ -1,0 +1,23 @@
+{
+  "name": "binance_postgres_connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "database.hostname": "YOUR_AIVEN_POSTGRES_HOST",
+    "database.port": "YOUR_AIVEN_POSTGRES_PORT",
+    "database.user": "YOUR_AIVEN_USERNAME",
+    "database.password": "YOUR_AIVEN_PASSWORD",
+    "database.dbname": "defaultdb",
+    "database.sslmode": "require",
+    "plugin.name": "pgoutput",
+    "slot.name": "binance_new_slot",
+    "publication.name": "binance_publication",
+    "publication.autocreate.mode": "filtered",
+    "schema.include.list": "binance_schema",
+    "table.include.list": "binance_schema.binance_prices,binance_schema.binance_24hrdata,binance_schema.binance_recent_trades,binance_schema.binance_candlesticks",
+    "topic.prefix": "binance_cdc",
+    "snapshot.mode": "initial",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:9092",
+    "schema.history.internal.kafka.topic": "schema-changes.binance"
+  }
+}
